@@ -4,7 +4,14 @@
       "Bash(git -C /Users/Baraa/my-ai-project add .)",
       "Bash(git -C /Users/Baraa/my-ai-project commit -m \"Add Next.js app files\")",
       "Bash(git -C /Users/Baraa/my-ai-project push)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -sS -o /dev/null -w \"/ → %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -sS -o /dev/null -w \"/revenue-agent → %{http_code}\\\\n\" http://localhost:3000/revenue-agent)",
+      "Bash(curl -sS -o /dev/null -w \"/api/run-revenue-agent GET → %{http_code}\\\\n\" http://localhost:3000/api/run-revenue-agent)",
+      "Bash(curl -sS -X POST http://localhost:3000/api/run-revenue-agent -H \"Content-Type: application/json\" -d '{}' -o /dev/null -w \"/api/run-revenue-agent POST empty → %{http_code}\\\\n\")",
+      "Bash(npx tsc *)",
+      "Bash(git -C /Users/Baraa/my-ai-project commit -m \"Pivot to single Revenue Growth Agent \\(Claude orchestrator\\)\")"
     ]
   }
 }
