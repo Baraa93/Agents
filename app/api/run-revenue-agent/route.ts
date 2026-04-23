@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { saveBrief } from "@/app/_lib/db";
+import { saveBrief, saveActionsFromSections } from "@/app/_lib/db";
 
 export const runtime = "nodejs";
 
@@ -217,12 +217,13 @@ export async function POST(req: Request) {
 
     const result: AgentResponse = { businessName, sections };
     try {
-      saveBrief({
+      const briefId = saveBrief({
         businessName,
         mainRevenueGoal,
         brief,
         response: result,
       });
+      saveActionsFromSections(briefId, sections);
     } catch (e) {
       console.error("Failed to persist brief:", e);
     }

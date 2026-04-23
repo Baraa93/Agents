@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBrief } from "@/app/_lib/db";
+import {
+  getBrief,
+  getLatestDraftPerAction,
+  listActionsForBrief,
+} from "@/app/_lib/db";
+import { ActionCard } from "./_components/ActionCard";
 
 export const dynamic = "force-dynamic";
 
@@ -58,6 +63,10 @@ export default async function BriefDetailPage({
     // stored JSON is corrupt — render what we have
   }
 
+  const actions = listActionsForBrief(row.id);
+  const latestDraftByAction = getLatestDraftPerAction(row.id);
+  const doneCount = actions.filter((a) => a.status === "done").length;
+
   const date = new Date(
     row.created_at.endsWith("Z") ? row.created_at : row.created_at + "Z"
   ).toLocaleString();
@@ -80,6 +89,30 @@ export default async function BriefDetailPage({
         </h1>
         <p className="mt-2 max-w-xl text-white/60">{row.main_revenue_goal}</p>
       </header>
+
+      {actions.length > 0 && (
+        <section className="mb-10">
+          <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-base font-semibold text-white">
+              This week&apos;s actions
+            </h2>
+            <span className="text-xs text-white/40">
+              {doneCount}/{actions.length} done · click “Draft it” to generate
+              the deliverable
+            </span>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {actions.map((action) => (
+              <ActionCard
+                key={action.id}
+                action={action}
+                briefId={row.id}
+                initialDraft={latestDraftByAction.get(action.id) ?? null}
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mb-10">
         <h2 className="mb-3 text-base font-semibold text-white">
