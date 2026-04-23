@@ -55,7 +55,6 @@ Both routes share the same shape — **keep new routes consistent**:
 
 - `ANTHROPIC_API_KEY` must be set in `.env.local` at the project root. **Next.js only loads `.env.local` at dev-server startup** — restart after changing it.
 - `.env.local` is `.env*`-ignored in `.gitignore`. Never commit it.
-- `OPENAI_API_KEY` is historical; not used by the app.
 - API routes set `export const runtime = "nodejs"` — keep this, the Anthropic SDK is happiest on Node runtime.
 
 ## Deploy-time caveat
