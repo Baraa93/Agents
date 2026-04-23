@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
+import { saveBrief } from "@/app/_lib/db";
 
 export const runtime = "nodejs";
 
@@ -215,6 +216,16 @@ export async function POST(req: Request) {
     }
 
     const result: AgentResponse = { businessName, sections };
+    try {
+      saveBrief({
+        businessName,
+        mainRevenueGoal,
+        brief,
+        response: result,
+      });
+    } catch (e) {
+      console.error("Failed to persist brief:", e);
+    }
     return NextResponse.json(result);
   } catch (err) {
     if (err instanceof Anthropic.AuthenticationError) {

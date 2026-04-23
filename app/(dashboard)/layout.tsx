@@ -16,8 +16,8 @@ type NavItem = {
 const navItems: NavItem[] = [
   { label: "Dashboard", href: "/", icon: IconDash },
   { label: "Revenue agent", href: "/revenue-agent", icon: IconSpark },
+  { label: "History", href: "/history", icon: IconRuns },
   { label: "Agency intake", href: "/new-client", icon: IconUsers },
-  { label: "Runs", icon: IconRuns, soon: true },
   { label: "Settings", icon: IconGear, soon: true },
 ];
 

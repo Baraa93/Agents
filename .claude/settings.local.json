@@ -18,7 +18,9 @@
       "Bash(git -C /Users/Baraa/my-ai-project remote set-head origin main)",
       "Bash(git -C /Users/Baraa/my-ai-project rev-parse origin/HEAD)",
       "Bash(git -C /Users/Baraa/my-ai-project diff HEAD -- '*.ts' '*.tsx')",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(curl -sS -w '\\\\n---\\\\nHTTP %{http_code} in %{time_total}s\\\\n' -X POST http://localhost:3000/api/run-revenue-agent -H 'Content-Type: application/json' -d '{ *)",
+      "Bash(tee /tmp/agent-test.json)"
     ]
   }
 }
