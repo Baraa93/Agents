@@ -28,9 +28,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     <div className="relative flex min-h-screen text-white">
       <DashboardBackground />
 
-      {/* Sidebar — desktop */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-[240px] flex-col border-r border-white/5 bg-[#0a0a10]/80 backdrop-blur-xl lg:flex">
-        <div className="flex items-center gap-2.5 px-5 pb-8 pt-6">
+        <div className="px-5 pb-8 pt-6">
           <Logo />
         </div>
 
@@ -101,7 +100,6 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      {/* Top bar — mobile */}
       <div className="fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-white/5 bg-[#0a0a10]/85 px-4 backdrop-blur-xl lg:hidden">
         <Logo />
         <Link
@@ -113,8 +111,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         </Link>
       </div>
 
-      <main className="relative flex-1 lg:pl-[240px]">
-        <div className="pt-14 lg:pt-0">{children}</div>
+      <main className="relative flex-1 pt-14 lg:pl-[240px] lg:pt-0">
+        {children}
       </main>
     </div>
   );
@@ -160,8 +158,6 @@ function DashboardBackground() {
   );
 }
 
-/* ----- icons (hand-rolled, 1.5 stroke) ----- */
-
 function IconDash(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -177,20 +173,6 @@ function IconDash(props: SVGProps<SVGSVGElement>) {
       <rect x="14" y="3" width="7" height="5" rx="1.5" />
       <rect x="14" y="12" width="7" height="9" rx="1.5" />
       <rect x="3" y="16" width="7" height="5" rx="1.5" />
-    </svg>
-  );
-}
-function IconPlus(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      {...props}
-    >
-      <path d="M12 5v14M5 12h14" />
     </svg>
   );
 }
@@ -224,24 +206,6 @@ function IconSpark(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8" />
-    </svg>
-  );
-}
-function IconBot(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <rect x="4" y="7" width="16" height="13" rx="2" />
-      <path d="M12 7V3" />
-      <circle cx="9" cy="13" r="1" />
-      <circle cx="15" cy="13" r="1" />
     </svg>
   );
 }

@@ -11,7 +11,14 @@
       "Bash(curl -sS -o /dev/null -w \"/api/run-revenue-agent GET → %{http_code}\\\\n\" http://localhost:3000/api/run-revenue-agent)",
       "Bash(curl -sS -X POST http://localhost:3000/api/run-revenue-agent -H \"Content-Type: application/json\" -d '{}' -o /dev/null -w \"/api/run-revenue-agent POST empty → %{http_code}\\\\n\")",
       "Bash(npx tsc *)",
-      "Bash(git -C /Users/Baraa/my-ai-project commit -m \"Pivot to single Revenue Growth Agent \\(Claude orchestrator\\)\")"
+      "Bash(git -C /Users/Baraa/my-ai-project commit -m \"Pivot to single Revenue Growth Agent \\(Claude orchestrator\\)\")",
+      "Bash(git -C /Users/Baraa/my-ai-project diff HEAD~1 --stat)",
+      "Bash(git -C /Users/Baraa/my-ai-project log --oneline -5)",
+      "Bash(curl -sS -o /dev/null -w \"/ → %{http_code}\\\\n/revenue-agent → %{http_code}\\\\n/new-client → %{http_code}\\\\n\" http://localhost:3000 http://localhost:3000/revenue-agent http://localhost:3000/new-client)",
+      "Bash(git -C /Users/Baraa/my-ai-project remote set-head origin main)",
+      "Bash(git -C /Users/Baraa/my-ai-project rev-parse origin/HEAD)",
+      "Bash(git -C /Users/Baraa/my-ai-project diff HEAD -- '*.ts' '*.tsx')",
+      "Bash(git *)"
     ]
   }
 }

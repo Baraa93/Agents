@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C * status*)",
+      "Bash(git -C * log*)",
+      "Bash(git -C * diff*)",
+      "Bash(git -C * show*)",
+      "Bash(git -C * branch*)",
+      "Bash(git -C * remote*)",
+      "Bash(git -C * rev-parse*)",
+      "Bash(git -C * check-ignore*)",
+      "Bash(git -C * ls-files*)",
+      "Bash(npx tsc --noEmit*)",
+      "Bash(sleep * && tail *)",
+      "Bash(sleep * && cat /private/tmp/*)"
+    ]
+  }
+}

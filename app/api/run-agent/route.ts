@@ -44,6 +44,9 @@ type AgentResponse = {
 
 const MODEL = "claude-opus-4-7";
 
+let client: Anthropic | null = null;
+const getClient = () => (client ??= new Anthropic());
+
 const SERVICES: Record<
   ServiceType,
   { persona: string; structure: string }
@@ -197,10 +200,8 @@ export async function POST(req: Request) {
     notes: body.notes,
   };
 
-  const client = new Anthropic();
-
   try {
-    const response = await client.messages.create({
+    const response = await getClient().messages.create({
       model: MODEL,
       max_tokens: 16000,
       thinking: { type: "adaptive" },

@@ -29,6 +29,9 @@ type AgentResponse = {
 
 const MODEL = "claude-opus-4-7";
 
+let client: Anthropic | null = null;
+const getClient = () => (client ??= new Anthropic());
+
 const SYSTEM_PROMPT = `You are an elite business operator helping a founder grow revenue. You internally combine the instincts and tactical knowledge of five specialists, and you synthesize their thinking into ONE output — the founder never sees the individual voices, only the result.
 
 The five internal specialists you consult:
@@ -170,10 +173,8 @@ export async function POST(req: Request) {
     notes: body.notes ?? "",
   };
 
-  const client = new Anthropic();
-
   try {
-    const response = await client.messages.create({
+    const response = await getClient().messages.create({
       model: MODEL,
       max_tokens: 16000,
       thinking: { type: "adaptive" },

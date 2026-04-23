@@ -73,7 +73,6 @@ export default function NewClientPage() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AgentResponse | null>(null);
 
-  // Pre-select agent via ?service= query param
   useEffect(() => {
     const svc = new URLSearchParams(window.location.search).get("service");
     if (isServiceType(svc)) {
@@ -289,13 +288,14 @@ export default function NewClientPage() {
   );
 }
 
+const AGENT_LABELS: Record<ServiceType, string> = {
+  strategy: "Strategy",
+  content: "Content",
+  ads: "Ads",
+};
+
 function ResultPanel({ result }: { result: AgentResponse }) {
-  const label =
-    result.agent === "strategy"
-      ? "Strategy"
-      : result.agent === "content"
-        ? "Content"
-        : "Ads";
+  const label = AGENT_LABELS[result.agent];
 
   return (
     <motion.section
