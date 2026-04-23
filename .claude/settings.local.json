@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/Baraa/my-ai-project add .)",
+      "Bash(git -C /Users/Baraa/my-ai-project commit -m \"Add Next.js app files\")",
+      "Bash(git -C /Users/Baraa/my-ai-project push)"
+    ]
+  }
+}
